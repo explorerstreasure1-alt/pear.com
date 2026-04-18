@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pear | Get Help, Instantly.</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="pear - Direct connection platform. Post your job ($4.99), get direct calls from local professionals, hire the best. Zero commission.">
+  <meta name="keywords" content="handyman, plumber, electrician, cleaning, painter, moving, repair, professional services">
+  <meta name="author" content="pear">
+  <link rel="canonical" href="https://pear.services">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="pear | Get Help, Instantly.">
+  <meta property="og:description" content="Direct connection platform. Post your job, get quotes from local pros, hire the best.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pear.services">
+  <meta property="og:image" content="https://pear.services/images/banner.jpg">
+  <meta name="twitter:image" content="https://pear.services/images/banner.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="pear | Get Help, Instantly.">
+  <meta name="twitter:description" content="Direct connection platform. Post your job, get quotes from local pros, hire the best.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍐</text></svg>">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="top"></div>
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+  
+  <div class="flex flex-col min-h-screen">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo" onclick="UI.scrollTo('top')" role="button" tabindex="0" aria-label="Go to homepage">
+          <img src="yenilogo.png" alt="pear" class="logo-img">
+          <span class="logo-text">pear<span>.</span></span>
+        </div>
+
+        <nav class="nav-menu desktop-nav">
+          <a href="#how-it-works" class="nav-link">How It Works</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#jobs" class="nav-link">Browse Jobs</a>
+          <a href="#providers" class="nav-link">Pros</a>
+        </nav>
+
+        <div class="nav-menu">
+          <button class="nav-link flex items-center gap-1" id="lang-btn">
+            <i data-lucide="globe" class="w-4 h-4"></i> <span id="lang-text">TR</span>
+          </button>
+          <button id="login-btn" class="nav-link">Log In</button>
+          <button id="post-btn" class="btn btn-primary">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            Post a Task ($4.99)
+          </button>
+        </div>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <!-- HERO -->
+      <section class="hero">
+        <img src="images/banner.jpg" alt="pear" class="hero-banner">
+        <div class="container hero-content">
+          <h1>Find Your Pro.<br><span>Instantly.</span></h1>
+          <p>Post your job, get quotes from local pros, hire the best. Pay only when satisfied.</p>
+          
+          <div class="search-box">
+              <div class="search-group">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="search-input" placeholder="What do you need help with?">
+              </div>
+              <div class="search-group">
+                <i data-lucide="map-pin" class="search-icon"></i>
+                <select id="country-filter-search">
+                  <option value="">All Countries</option>
+                  <option value="TR">🇹🇷 Turkey</option>
+                  <option value="DE">🇩🇪 Germany</option>
+                  <option value="US">🇺🇸 USA</option>
+                  <option value="GB">🇬🇧 UK</option>
+                  <option value="FR">🇫🇷 France</option>
+                </select>
+              </div>
+              <button id="search-btn" class="search-btn">
+                <i data-lucide="arrow-right"></i>
+                Find Pros
+              </button>
+            </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works" class="section">
+        <div class="container">
+          <h2 class="section-title">How It Works <span>in 3 Steps</span></h2>
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <h3 class="step-title">Post Your Need ($4.99)</h3>
+              <p class="step-desc">Fill in details, add address & phone. Pay a one-time fee to publish.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <h3 class="step-title">Get Direct Calls</h3>
+              <p class="step-desc">Verified pros in your area will call your phone directly.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <h3 class="step-title">Deal & Pay Directly</h3>
+              <p class="step-desc">Negotiate price, finish the job, pay them using any method.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY PEAR -->
+      <section class="section section-gray">
+        <div class="container">
+          <h2 class="section-title">Why pear? <span>Direct & Fair</span></h2>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon"><i data-lucide="message-circle"></i></div>
+              <h3 class="feature-title">Direct Negotiations</h3>
+              <p class="feature-desc">No middlemen. You speak, negotiate, and pay the professional yourself.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+              <h3 class="feature-title">Verified Users</h3>
+              <p class="feature-desc">Jobs are posted by paying users with verified phone numbers & addresses.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i data-lucide="coins"></i></div>
+              <h3 class="feature-title">Zero Commission</h3>
+              <p class="feature-desc">Pros keep 100% of earnings. We never take a cut from the job price.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="section">
+        <div class="container" style="max-width: 1400px;">
+          <h2 class="section-title">Popular Services</h2>
+          <div id="categories-container" class="services-grid"></div>
+        </div>
+      </section>
+
+      <!-- JOBS -->
+      <section id="jobs" class="section section-gray">
+        <div class="container" style="max-width: 900px;">
+          <div class="jobs-header">
+            <h2 class="jobs-title">📋 Active Tasks</h2>
+            <div class="jobs-filters">
+              <select id="jobs-country-filter" onchange="filterJobsByCountry(this.value)">
+                <option value="">All Countries</option>
+                <option value="TR">🇹🇷 Turkey</option>
+                <option value="DE">🇩🇪 Germany</option>
+                <option value="US">🇺🇸 USA</option>
+                <option value="GB">🇬🇧 UK</option>
+                <option value="FR">🇫🇷 France</option>
+              </select>
+              <select id="jobs-category-filter" onchange="filterJobsByCategory(this.value)">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <span id="role-badge" class="provider-badge hidden">Pro</span>
+          </div>
+          <div id="jobs-container"></div>
+        </div>
+      </section>
+
+      <!-- PROVIDERS -->
+      <section id="providers" class="section">
+        <div class="container" style="max-width: 900px;">
+          <div class="jobs-header">
+            <h2 class="jobs-title">⭐ Top Rated Pros</h2>
+            <div class="country-filter" id="country-filter"></div>
+          </div>
+          <div id="providers-container"></div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <div class="container">
+          <i data-lucide="users" class="cta-icon"></i>
+          <h2 class="cta-title">Looking for clients?</h2>
+          <p class="cta-desc">Access local leads instantly. Pay nothing to browse tasks — get phone numbers, make calls, keep all the money.</p>
+          <button id="cta-btn" class="cta-btn">
+            Browse Local Tasks (Free)
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <img src="yenilogo.png" alt="pear" style="width: 32px; height: auto;">
+              <span>pear</span>
+            </div>
+            <p class="footer-tagline">Direct connection platform</p>
+          </div>
+          <div>
+            <h4 class="footer-title">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="javascript:void(0)" onclick="openModal('post-modal'); return false;">Post a Task</a></li>
+              <li><a href="#jobs">Browse Jobs</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-title">Legal</h4>
+            <ul class="footer-links">
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="disclaimer">
+          <strong>How it works:</strong> Post your job ($4.99). Get free quotes from local pros. Hire the best. Pay the pro directly after the job is done. No commission.
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">© 2025 pear — Get Help, Instantly.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- MODALS -->
+  <div id="post-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Post a Task ($4.99)</h2>
+        <button class="modal-close" id="close-post" aria-label="Close">&times;</button>
+      </div>
+      <form id="post-form">
+        <div class="form-group">
+          <label>Country / Region *</label>
+          <select id="form-country" required>
+            <option value="">Select your country</option>
+            <option value="TR">🇹🇷 Turkey</option>
+            <option value="US">🇺🇸 United States</option>
+            <option value="DE">🇩🇪 Germany</option>
+            <option value="GB">🇬🇧 United Kingdom</option>
+            <option value="FR">🇫🇷 France</option>
+            <option value="ES">🇪🇸 Spain</option>
+            <option value="IT">🇮🇹 Italy</option>
+            <option value="NL">🇳🇱 Netherlands</option>
+            <option value="BE">🇧🇪 Belgium</option>
+            <option value="AT">🇦🇹 Austria</option>
+            <option value="CH">🇨🇭 Switzerland</option>
+            <option value="RU">🇷🇺 Russia</option>
+            <option value="UA">🇺🇦 Ukraine</option>
+            <option value="AZ">🇦🇿 Azerbaijan</option>
+            <option value="GE">🇬🇪 Georgia</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Service Category *</label>
+          <select id="form-category" required>
+            <option value="">Select category</option>
+            <option value="plumbing">🚰 Plumbing</option>
+            <option value="electrical">⚡ Electrical</option>
+            <option value="cleaning">🧹 Cleaning</option>
+            <option value="painting">🎨 Painting</option>
+            <option value="moving">📦 Moving</option>
+            <option value="repair">🔧 Repair</option>
+            <option value="equipment">🛠️ Equipment</option>
+            <option value="design">🎨 Graphic Design</option>
+            <option value="software">💻 Software</option>
+            <option value="it">🖥️ IT Support</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Title *</label>
+          <input type="text" id="form-title" placeholder="e.g., Fix leaking faucet" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="form-desc" placeholder="Describe what you need..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Full Address *</label>
+          <input type="text" id="form-address" placeholder="Street, city, ZIP" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp / Phone Number *</label>
+          <input type="tel" id="form-phone" inputmode="tel" pattern="^\+?[1-9]\d{7,14}$" title="Format: +90 5XX XXX XX XX" placeholder="+90 5XX XXX XX XX" required>
+          <small style="color: var(--text-muted); font-size: 0.8rem;">Format: +90 5XX XXX XX XX - This number will be visible to service providers</small>
+        </div>
+        <div class="form-group">
+          <label>Email (Optional)</label>
+          <input type="email" id="form-email" placeholder="your@email.com">
+        </div>
+        <div class="form-info">
+          <i data-lucide="check-circle"></i>
+          <strong>$4.99 posting fee</strong> – Ödeme sonrası ilanınız yayınlanır. Phone visible to providers.
+        </div>
+        <div class="form-actions">
+          <button type="button" id="cancel-post" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Pay $4.99 & Publish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Access your account</h3>
+        <button class="modal-close" id="close-auth" aria-label="Close">&times;</button>
+      </div>
+      <form id="auth-form" onsubmit="handleAuth(event)">
+        <div class="form-group">
+          <label for="auth-name">Full Name</label>
+          <input type="text" id="auth-name" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label for="auth-email">Email</label>
+          <input type="email" id="auth-email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label for="auth-role">I am a</label>
+          <select id="auth-role">
+            <option value="customer">Customer (I need help)</option>
+            <option value="provider">Professional</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Continue</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="detail-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="detail-title"></h2>
+        <button class="modal-close" id="close-detail" aria-label="Close">&times;</button>
+      </div>
+      <p id="detail-category" class="detail-category"></p>
+      <div id="detail-content" class="detail-content"></div>
+      <div id="offers-section" class="offers-section"></div>
+      <div class="contact-box">
+        <div class="contact-label">
+          <i data-lucide="phone-forwarded"></i>
+          Contact details (visible only for Pros)
+        </div>
+        <div id="contact-sensitive"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="offer-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Send Your Quote</h3>
+        <button class="modal-close" id="close-offer" aria-label="Close">&times;</button>
+      </div>
+      <form id="offer-form">
+        <div class="form-group">
+          <label>Your Price (USD)</label>
+          <input type="number" id="offer-price" placeholder="e.g., 150" required min="1">
+        </div>
+        <div class="form-group">
+          <label>Message to Customer</label>
+          <textarea id="offer-message" placeholder="Describe your service, experience, etc."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Your Phone</label>
+          <input type="tel" id="offer-phone" placeholder="+90 5XX XXX XX XX" required>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="cancel-offer" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send Quote (Free)</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="lang-modal" class="modal hidden">
+    <div class="modal-content" style="max-width: 400px;">
+      <div class="modal-header">
+        <h3>Select Language</h3>
+        <button class="modal-close" id="close-lang" aria-label="Close">&times;</button>
+      </div>
+      <div id="lang-list" class="lang-list"></div>
+    </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div id="review-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Rate this Professional</h3>
+        <button class="modal-close" id="close-review" aria-label="Close">&times;</button>
+      </div>
+      <div id="review-provider-info" style="margin-bottom: 20px; padding: 12px; background: var(--bg-gray); border-radius: 8px;"></div>
+      <form id="review-form">
+        <div class="form-group">
+          <label>Your Rating</label>
+          <div class="star-rating" id="star-rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <input type="hidden" id="review-rating" value="0">
+        </div>
+        <div class="form-group">
+          <label>Your Review (optional)</label>
+          <textarea id="review-comment" placeholder="Share your experience..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="cancel-review" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
