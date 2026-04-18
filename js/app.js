@@ -510,11 +510,18 @@ function handlePostSubmit(e) {
   
   // Lemon Squeezy ödemeye yönlendir
   const checkoutUrl = new URL('https://projeai.lemonsqueezy.com/checkout/buy/d76a4195-8d56-4ec1-888b-618528a19aac');
-  checkoutUrl.searchParams.set('checkout[custom][job_title]', title);
-  checkoutUrl.searchParams.set('checkout[custom][category]', category);
-  checkoutUrl.searchParams.set('checkout[custom][country]', country);
-  checkoutUrl.searchParams.set('checkout[success_url]', window.location.origin + window.location.pathname + '?payment=success');
-  checkoutUrl.searchParams.set('checkout[cancel_url]', window.location.origin + window.location.pathname + '?payment=cancelled');
+  
+  // Custom data gönder
+  checkoutUrl.searchParams.set('checkout[custom][job_title]', encodeURIComponent(title));
+  checkoutUrl.searchParams.set('checkout[custom][category]', encodeURIComponent(category));
+  checkoutUrl.searchParams.set('checkout[custom][country]', encodeURIComponent(country));
+  
+  // Success → direkt siteye dön ve job yayınla
+  const baseUrl = window.location.origin + window.location.pathname;
+  checkoutUrl.searchParams.set('checkout[success_url]', baseUrl + '?payment=success');
+  checkoutUrl.searchParams.set('checkout[cancel_url]', baseUrl + '?payment=cancelled');
+  
+  console.log('Redirecting to:', checkoutUrl.toString());
   
   // Ödemeye git
   window.location.href = checkoutUrl.toString();
