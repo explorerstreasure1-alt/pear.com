@@ -13,10 +13,10 @@ const state = {
 
 // Sample Providers with Ratings
 const sampleProviders = [
-  { id: 'p1', name: 'Ahmet Usta', phone: '+90 532 123 4567', category: 'tesisat', country: 'TR', rating: 4.8, reviewCount: 12 },
-  { id: 'p2', name: 'Mehmet Elektrikçi', phone: '+90 532 234 5678', category: 'elektrik', country: 'TR', rating: 4.5, reviewCount: 8 },
-  { id: 'p3', name: 'Sarah Cleaner', phone: '+49 171 234 5678', category: 'temizlik', country: 'DE', rating: 5.0, reviewCount: 15 },
-  { id: 'p4', name: 'John Painter', phone: '+1 555 123 4567', category: 'boyaci', country: 'US', rating: 4.2, reviewCount: 6 }
+  { id: 'p1', name: 'Ahmet the Plumber', phone: '+90 532 123 4567', category: 'plumbing', country: 'TR', rating: 4.8, reviewCount: 12 },
+  { id: 'p2', name: 'Mike Electrician', phone: '+90 532 234 5678', category: 'electrical', country: 'TR', rating: 4.5, reviewCount: 8 },
+  { id: 'p3', name: 'Sarah Cleaning Pro', phone: '+49 171 234 5678', category: 'cleaning', country: 'DE', rating: 5.0, reviewCount: 15 },
+  { id: 'p4', name: 'John the Painter', phone: '+1 555 123 4567', category: 'painting', country: 'US', rating: 4.2, reviewCount: 6 }
 ];
 
 // Translations
@@ -58,32 +58,32 @@ const t = (key) => {
   return val || key;
 };
 
-// Categories - using user's images
+// Categories - English
 const categories = [
-  { id: 'tesisat', name: 'Tesisat', desc: 'Su tesisatı, boru tamiri, musluk değişimi, kombi bakımı', img: 'images/tesisat.jpg' },
-  { id: 'elektrik', name: 'Elektrik', desc: 'Elektrik tesisatı, priz/switch tamiri, avize montajı, Erdği uygunluk', img: 'images/elektirik.jpg' },
-  { id: 'boyaci', name: 'Boyacı', desc: 'İç cephe boya, dış cephe boya, alçı sıva, vernik işleri', img: 'images/boyacı.jpg' },
-  { id: 'temizlik', name: 'Temizlik', desc: 'Derin ev temizliği, genel temizlik, taşınma sonrası temizlik', img: 'images/Derin Ev Temizliği.jpg' },
-  { id: 'ofis-temizlik', name: 'Ofis Temizliği', desc: 'Ofis temizliği, işyeri dezenfeksiyonu, cam temizliği', img: 'images/Ofis Temizliği.jpg' },
-  { id: 'hali-koltuk', name: 'Halı & Koltuk', desc: 'Halı yıkama, koltuk yıkama, perde temizliği', img: 'images/Temizlik halı koltuk.jpg' },
-  { id: 'nakliyat', name: 'Nakliyat', desc: 'Ev taşıma, eşya taşıma, asansörlü taşıma, paketleme', img: 'images/nakliyat.jpg' },
-  { id: 'mobilya-montaj', name: 'Mobilya Montaj', desc: 'İKEA mobilya montaj, dolap montaj, tv ünitesi montaj', img: 'images/mobilya montajı.jpg' },
-  { id: 'mobilya-tamir', name: 'Mobilya Tamir', desc: 'Mobilya onarım, kapı pencere tamiri, ahşap restorasyon', img: 'images/mobilya tamir.jpg' },
-  { id: 'cilingir', name: 'Çilingir', desc: 'Kilit değişimi, kapı açma, güvenlik sistemi montajı', img: 'images/çilingir.jpg' },
-  { id: 'oto-tamir', name: 'Oto Tamir', desc: 'Araba tamiri, yağ değişimi, lastik değişimi, akü takma', img: 'images/oto tamirc.jpg' },
-  { id: 'it-destek', name: 'IT Desteği', desc: 'Bilgisayar tamiri, virus temizleme, internet kurulumu', img: 'images/Yerinde IT Desteği.jpg' },
-  { id: 'teknik-servis', name: 'Teknik Servis', desc: 'Beyaz eşya tamiri, klima bakım, tv tamiri', img: 'images/teknik servis.jpg' },
-  { id: 'grafik-tasarim', name: 'Grafik Tasarım', desc: 'Logo tasarım, kartvizit, sosyal medya tasarımı', img: 'images/grafik tasarımcı.jpg' },
-  { id: 'kuafor', name: 'Kuaför', desc: 'Saç kesimi, boyama, fön, kadın erkek kuaför hizmeti', img: 'images/Profesyonel Kuaför.jpg' },
-  { id: 'terzilik', name: 'Terzilik', desc: 'Kıyafet tamiri, dikim, perde dikimi, ölçülü dikim', img: 'images/Terzilik.jpg' },
-  { id: 'baca-tamir', name: 'Çatı Onarım', desc: 'Çatı tamiri, oluk temizliği, izolasyon, su yalıtımı', img: 'images/Çatı ve Oluk Onarımı.jpg' },
-  { id: 'mutfak-montaj', name: 'Mutfak Montaj', desc: 'Mutfak dolabı montaj, banyo montaj, tezgah takma', img: 'images/MutfakBanyo Montajı.jpg' },
-  { id: 'bagi-tasarim', name: 'Bahçe Tasarım', desc: 'Bahçe düzenleme, çim döşeme, bitki dikimi, sulama sistemi', img: 'images/Bahçe Tasarımı.jpg' },
-  { id: 'havuz-temizlik', name: 'Havuz Temizliği', desc: 'Havuz temizliği, bakım, kimyasal temizlik,filtre temizliği', img: 'images/Havuz Temizliği.jpg' },
-  { id: 'ilaclama', name: 'İlaçlama', desc: 'Haşere ilaçlama, fare güvercin kontrol, dezenfeksiyon', img: 'images/ilaçlama.jpg' },
-  { id: 'kopek-egitmen', name: 'Köpek Eğitmeni', desc: 'Köpek eğitimi, davranış düzeltme, yürüyüş eğitimi', img: 'images/köpek eğitmeni.jpg' },
-  { id: 'koltuk-yikama', name: 'Koltuk Yıkama', desc: 'Koltuk yıkama, oturma grubu temizliği, leather bakım', img: 'images/koltuk yıkama.jpg' },
-  { id: 'editor', name: 'Editör', desc: 'Video düzenleme, fotoğraf rötuşu, içerik editörlüğü', img: 'images/editör.jpg' }
+  { id: 'plumbing', name: 'Plumbing', desc: 'Pipe repair, faucet fix, water heater service', img: 'images/tesisat.jpg' },
+  { id: 'electrical', name: 'Electrical', desc: 'Electrical wiring, socket repair, lighting install', img: 'images/elektirik.jpg' },
+  { id: 'painting', name: 'Painting', desc: 'Interior/exterior painting, wall priming', img: 'images/boyacı.jpg' },
+  { id: 'cleaning', name: 'Deep Cleaning', desc: 'Full house cleaning, move-in/out cleaning', img: 'images/Derin Ev Temizliği.jpg' },
+  { id: 'office-cleaning', name: 'Office Cleaning', desc: 'Office cleaning, disinfection, window cleaning', img: 'images/Ofis Temizliği.jpg' },
+  { id: 'carpet-cleaning', name: 'Carpet & Upholstery', desc: 'Carpet cleaning, sofa cleaning, curtain cleaning', img: 'images/Temizlik halı koltuk.jpg' },
+  { id: 'moving', name: 'Moving', desc: 'Home moving, furniture transport, packing services', img: 'images/nakliyat.jpg' },
+  { id: 'furniture-assembly', name: 'Furniture Assembly', desc: 'IKEA furniture assembly, cabinet installation', img: 'images/mobilya montajı.jpg' },
+  { id: 'furniture-repair', name: 'Furniture Repair', desc: 'Furniture repair, door/window repair, restoration', img: 'images/mobilya tamir.jpg' },
+  { id: 'locksmith', name: 'Locksmith', desc: 'Lock change, lockout service, security systems', img: 'images/çilingir.jpg' },
+  { id: 'auto-repair', name: 'Auto Repair', desc: 'Car repair, oil change, tire replacement', img: 'images/oto tamirc.jpg' },
+  { id: 'it-support', name: 'IT Support', desc: 'Computer repair, virus removal, internet setup', img: 'images/Yerinde IT Desteği.jpg' },
+  { id: 'appliance', name: 'Appliance Repair', desc: 'White goods repair, AC service, TV repair', img: 'images/teknik servis.jpg' },
+  { id: 'graphic-design', name: 'Graphic Design', desc: 'Logo design, business cards, social media', img: 'images/grafik tasarımcı.jpg' },
+  { id: 'hairdressing', name: 'Hairdresser', desc: 'Haircut, coloring, styling, barber services', img: 'images/Profesyonel Kuaför.jpg' },
+  { id: 'tailoring', name: 'Tailoring', desc: 'Clothing repair, alterations, custom sewing', img: 'images/Terzilik.jpg' },
+  { id: 'roofing', name: 'Roofing', desc: 'Roof repair, gutter cleaning, waterproofing', img: 'images/Çatı ve Oluk Onarımı.jpg' },
+  { id: 'kitchen-install', name: 'Kitchen Install', desc: 'Kitchen cabinet install, bathroom fixtures', img: 'images/MutfakBanyo Montajı.jpg' },
+  { id: 'gardening', name: 'Gardening', desc: 'Garden design, lawn installation, landscaping', img: 'images/Bahçe Tasarımı.jpg' },
+  { id: 'pool-cleaning', name: 'Pool Cleaning', desc: 'Pool cleaning, maintenance, filter cleaning', img: 'images/Havuz Temizliği.jpg' },
+  { id: 'pest-control', name: 'Pest Control', desc: 'Pest control, fumigation, disinfection', img: 'images/ilaçlama.jpg' },
+  { id: 'dog-training', name: 'Dog Training', desc: 'Dog training, behavior correction, walking training', img: 'images/köpek eğitmeni.jpg' },
+  { id: 'upholstery', name: 'Upholstery Cleaning', desc: 'Sofa cleaning, upholstery deep cleaning', img: 'images/koltuk yıkama.jpg' },
+  { id: 'video-editing', name: 'Video Editing', desc: 'Video editing, photo retouching, content editing', img: 'images/editör.jpg' }
 ];
 
 // Banner Image
@@ -91,11 +91,11 @@ const bannerImg = 'images/banner.jpg';
 
 // Sample Jobs
 const sampleJobs = [
-  { id: '1', title: 'Kitchen faucet leaking', description: 'Need plumber ASAP', category: 'plumbing', address: 'Istanbul, Kadıköy', phone: '+90 532 123 4567', country: 'TR', status: 'Open', createdAt: new Date().toISOString() },
+  { id: '1', title: 'Kitchen faucet leaking', description: 'Need plumber ASAP', category: 'plumbing', address: 'Istanbul, Kadikoy', phone: '+90 532 123 4567', country: 'TR', status: 'Open', createdAt: new Date().toISOString() },
   { id: '2', title: 'Living room painting', description: '40m2, white color', category: 'painting', address: 'Berlin, Mitte', phone: '+49 171 234 5678', country: 'DE', status: 'Open', createdAt: new Date().toISOString() },
-  { id: '3', title: 'Logo design needed', description: 'Modern logo for tech startup', category: 'design', address: 'Remote', phone: '+1 555 123 4567', country: 'US', status: 'Open', createdAt: new Date().toISOString() },
-  { id: '4', title: 'Website down', description: 'WordPress site not loading', category: 'software', address: 'London', phone: '+44 7700 900123', country: 'GB', status: 'Open', createdAt: new Date().toISOString() },
-  { id: '5', title: 'Computer slow', description: 'Windows optimization needed', category: 'it', address: 'İzmir, Bornova', phone: '+90 532 567 8901', country: 'TR', status: 'Open', createdAt: new Date().toISOString() },
+  { id: '3', title: 'Logo design needed', description: 'Modern logo for tech startup', category: 'graphic-design', address: 'Remote', phone: '+1 555 123 4567', country: 'US', status: 'Open', createdAt: new Date().toISOString() },
+  { id: '4', title: 'Website down', description: 'WordPress site not loading', category: 'it-support', address: 'London', phone: '+44 7700 900123', country: 'GB', status: 'Open', createdAt: new Date().toISOString() },
+  { id: '5', title: 'Computer slow', description: 'Windows optimization needed', category: 'it-support', address: 'Izmir, Bornova', phone: '+90 532 567 8901', country: 'TR', status: 'Open', createdAt: new Date().toISOString() },
   { id: '6', title: 'Move furniture', description: '2 bedroom apartment move', category: 'moving', address: 'Paris, 15e', phone: '+33 6 12 34 56 78', country: 'FR', status: 'Open', createdAt: new Date().toISOString() }
 ];
 
