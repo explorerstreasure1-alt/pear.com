@@ -127,20 +127,19 @@ function handlePaymentRedirect() {
     try {
       const pendingJob = JSON.parse(pendingJobData);
       
-      // Ödeme sonrası form aç - kullanıcı адрес ve telefon girmeli
+      // Check if we have all required data
       if (!pendingJob.address || !pendingJob.phone) {
-        // Eksik bilgi var - form modal aç
         showNotification('Please complete your job details', 'info');
         openModal('post-modal');
-        // Form alanlarını doldur
-        $('#form-country').value = pendingJob.country;
-        $('#form-category').value = pendingJob.category;
-        $('#form-title').value = pendingJob.title;
+        $('#form-country').value = pendingJob.country || '';
+        $('#form-category').value = pendingJob.category || '';
+        $('#form-title').value = pendingJob.title || '';
         $('#form-desc').value = pendingJob.description || '';
         window.history.replaceState({}, document.title, window.location.pathname);
         return;
       }
       
+      // Create and publish job directly
       const job = { 
         ...pendingJob, 
         id: 'job_' + Date.now(), 
@@ -151,19 +150,23 @@ function handlePaymentRedirect() {
       };
       
       state.jobs.unshift(job);
-      JobsAPI.add(job); // Save to storage
+      if (window.JobsAPI) {
+        JobsAPI.add(job);
+      }
       localStorage.removeItem('pear_pending_job');
       
-      // Clear URL params
+      // Clear URL
       window.history.replaceState({}, document.title, window.location.pathname);
       
-      // Show success and scroll
-      showNotification('✅ Job posted! Thanks for your payment.', 'success');
+      // Show success
+      showNotification('🎉 Job posted! Thanks for your payment.', 'success');
+      renderAll();
       document.getElementById('jobs')?.scrollIntoView({ behavior: 'smooth' });
       
-      console.log('Job published after payment:', job.title);
+      console.log('Job published:', job.title);
     } catch (e) {
-      console.error('Error processing payment:', e);
+      console.error('Error:', e);
+      showNotification('Error publishing job', 'error');
     }
   } else if (paymentStatus === 'cancelled') {
     localStorage.removeItem('pear_pending_job');
@@ -475,21 +478,28 @@ function logout() {
 function handlePostSubmit(e) {
   e.preventDefault();
   
-  // Önce ödemeye git - formu kaydetme
+  // Tüm zorunlu alanları kontrol et
   const country = $('#form-country')?.value;
   const category = $('#form-category')?.value;
   const title = $('#form-title')?.value?.trim();
+  const address = $('#form-address')?.value?.trim();
+  const phone = $('#form-phone')?.value?.trim();
   
-  if (!country || !category || !title) return alert('Please fill in Country, Category and Title');
+  if (!country || !category || !title) return alert('Please fill in: Country, Category, Title');
+  if (!address || !phone) {
+    showNotification('Please fill Address and Phone to continue', 'error');
+    $('#form-address').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
   
-  // Form verilerini geçici olarak sakla
+  // Form verilerini kaydet
   state.pendingJob = {
     country,
     category,
     title,
     description: $('#form-desc')?.value?.trim(),
-    address: $('#form-address')?.value?.trim(),
-    phone: $('#form-phone')?.value?.trim(),
+    address,
+    phone,
     email: $('#form-email')?.value?.trim()
   };
   localStorage.setItem('pear_pending_job', JSON.stringify(state.pendingJob));
